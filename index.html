@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mockup — Implement Microsoft Purview Data Security (proposed Titan course)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rail: #284a48;
+    --rail-icon: #c4ffb1;
+    --side-rail-bg: #ffffff;
+    --side-rail-border: #e4e6e9;
+    --side-rail-active-text: #1f2c3a;
+    --side-rail-text: #6f7a86;
+    --side-rail-hover: #f6f7f9;
+    --page-bg: #eef1f4;
+    --card-bg: #ffffff;
+    --card-border: #e6e9ec;
+    --card-stripe: #6f00c4;
+    --text: #1f2c3a;
+    --text-muted: #6f7a86;
+    --text-soft: #94a0ad;
+    --topbar-bg: #ffffff;
+    --pill-resume-bg: #eef0f3;
+    --pill-locked-bg: #eef0f3;
+    --pill-locked-text: #6f7a86;
+    --pill-new-bg: #fff4d6;
+    --pill-new-text: #7a5800;
+    --progress-ring-empty: #e2e5e9;
+    --mockup-banner-bg: #fde2c8;
+    --mockup-banner-text: #8a3d00;
+    --mockup-border: #f0c89a;
+    --accent: #c4ffb1;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--page-bg); color: var(--text); line-height: 1.5; font-size: 14px; }
+  .mockup-banner { background: var(--mockup-banner-bg); color: var(--mockup-banner-text); padding: 10px 20px; text-align: center; font-weight: 600; font-size: 13px; letter-spacing: 0.4px; text-transform: uppercase; border-bottom: 1px solid var(--mockup-border); }
+  .mockup-banner span { font-weight: 500; text-transform: none; letter-spacing: 0; margin-left: 10px; opacity: 0.92; }
+  .shell { display: flex; min-height: 100vh; }
+  .mini-rail { width: 56px; background: var(--rail); color: var(--rail-icon); display: flex; flex-direction: column; align-items: center; padding-top: 16px; gap: 22px; flex-shrink: 0; }
+  .mini-rail .ico { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; opacity: 0.95; }
+  .mini-rail .ico svg { width: 22px; height: 22px; stroke-width: 2; }
+  .mini-rail .ico.active { background: rgba(196, 255, 177, 0.12); border-radius: 8px; }
+  .side-rail { width: 220px; background: var(--side-rail-bg); border-right: 1px solid var(--side-rail-border); padding: 28px 12px; flex-shrink: 0; }
+  .side-rail .item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-radius: 8px; color: var(--side-rail-text); font-size: 14px; cursor: pointer; margin-bottom: 4px; }
+  .side-rail .item:hover { background: var(--side-rail-hover); }
+  .side-rail .item.active { color: var(--side-rail-active-text); font-weight: 600; box-shadow: inset 3px 0 0 var(--side-rail-active-text); }
+  .side-rail .item svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.6; }
+  .main { flex: 1; min-width: 0; }
+  .topbar { background: var(--topbar-bg); display: flex; align-items: center; justify-content: space-between; padding: 14px 28px; border-bottom: 1px solid var(--side-rail-border); }
+  .topbar h1 { font-size: 18px; margin: 0; color: var(--text); font-weight: 700; }
+  .topbar .right { display: flex; align-items: center; gap: 22px; color: var(--text-soft); }
+  .topbar .right .icon svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+  .topbar .right .bell { position: relative; }
+  .topbar .right .bell .dot { position: absolute; top: -6px; right: -6px; background: #2ea043; color: #fff; font-size: 10px; font-weight: 700; border-radius: 50%; width: 16px; height: 16px; display: flex; align-items: center; justify-content: center; }
+  .topbar .right .user { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text); }
+  .topbar .right .user .avatar { width: 30px; height: 30px; background: linear-gradient(135deg, #66b6c5, #4992a7); border-radius: 50%; }
+  .content { padding: 28px 36px; display: grid; grid-template-columns: 1fr 280px; gap: 28px; }
+  .modules-pane h2 { font-size: 22px; margin: 0 0 4px; color: var(--text); }
+  .modules-pane .sub { color: var(--text-muted); font-size: 13px; margin-bottom: 22px; }
+  .module-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .module-card { background: var(--card-bg); border: 1px solid var(--card-border); border-left: 3px solid var(--card-stripe); border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; position: relative; }
+  .module-card .image { height: 140px; position: relative; background-size: cover; background-position: center; }
+  .module-card .image.m1 { background: linear-gradient(135deg, #3a6e7f 0%, #1f3a4a 100%); }
+  .module-card .image.m1::after { content: '\01F6E1'; position: absolute; bottom: 14px; right: 18px; font-size: 38px; opacity: 0.85; }
+  .module-card .image.m2 { background: linear-gradient(135deg, #5a4a73 0%, #2f2244 100%); }
+  .module-card .image.m2::after { content: '\01F6A7'; position: absolute; bottom: 14px; right: 18px; font-size: 38px; opacity: 0.85; }
+  .module-card .image.placeholder { background: linear-gradient(135deg, #d8dee5 0%, #b8c1cc 100%); }
+  .module-card .image.placeholder::after { content: '+'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 48px; color: rgba(255,255,255,0.95); font-weight: 300; }
+  .module-card .new-pill { position: absolute; top: 12px; left: 12px; background: var(--pill-new-bg); color: var(--pill-new-text); font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 4px; letter-spacing: 0.6px; }
+  .module-card .body { padding: 14px 16px 14px; flex: 1; display: flex; flex-direction: column; }
+  .module-card .body h3 { margin: 0 0 8px; font-size: 14.5px; font-weight: 700; color: var(--text); line-height: 1.35; }
+  .module-card .body p { margin: 0 0 14px; font-size: 13px; color: var(--text); line-height: 1.55; flex: 1; }
+  .module-card.future .body p { color: var(--text-muted); font-style: italic; }
+  .module-card .footer { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px 14px; margin-top: auto; }
+  .module-card .footer .status { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 18px; font-size: 12px; font-weight: 500; text-decoration: none; }
+  .module-card .footer .status.start { background: var(--accent); color: #1f3a25; font-weight: 600; cursor: pointer; }
+  .module-card .footer .status.start:hover { background: #b5f095; }
+  .module-card .footer .status.locked { background: var(--pill-locked-bg); color: var(--pill-locked-text); }
+  .module-card .footer .status svg { width: 12px; height: 12px; }
+  .module-card .footer .section-count { font-size: 11px; color: var(--text-soft); }
+  .side-info { display: flex; flex-direction: column; gap: 14px; }
+  .info-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 6px; padding: 16px 18px; }
+  .info-card h4 { margin: 0 0 12px; font-size: 14px; font-weight: 700; color: var(--text); display: flex; align-items: center; gap: 8px; }
+  .info-card h4 svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+  .progress-ring { width: 80px; height: 80px; margin: 4px auto 8px; position: relative; }
+  .progress-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .progress-ring circle { fill: none; stroke-width: 8; }
+  .progress-ring .bg { stroke: var(--progress-ring-empty); }
+  .progress-ring .pct { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: var(--text); }
+  .info-card .none-row { color: var(--text-muted); font-size: 13px; }
+  .preview-section { margin: 0 36px 28px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 10px; overflow: hidden; }
+  .preview-section .head { background: linear-gradient(180deg, #1f2c3a, #0e1c2f); color: white; padding: 16px 26px; }
+  .preview-section .head .module-num { display: inline-block; background: var(--accent); color: #1f3a25; padding: 3px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.6px; margin-bottom: 8px; }
+  .preview-section .head h2 { font-size: 22px; font-weight: 700; margin: 0 0 6px; }
+  .preview-section .head .lead { font-size: 13px; color: #c4cdd6; margin: 0; max-width: 800px; }
+  .preview-body { padding: 22px 26px; }
+  .preview-body h4 { font-size: 14px; color: var(--text); margin: 0 0 12px; display: flex; align-items: center; gap: 8px; }
+  .preview-body h4::before { content: ''; display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+  .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .preview-tile { background: #fafbfc; border: 1px solid var(--card-border); border-radius: 8px; overflow: hidden; }
+  .preview-tile .tile-head { padding: 12px 16px; background: #f1f4f7; border-bottom: 1px solid var(--card-border); display: flex; align-items: center; justify-content: space-between; }
+  .preview-tile .tile-head .label { font-weight: 600; font-size: 13px; color: var(--text); }
+  .preview-tile .tile-head .tag { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px; letter-spacing: 0.4px; text-transform: uppercase; }
+  .preview-tile .tile-head .tag.live { background: #d1fae5; color: #065f46; }
+  .preview-tile .tile-head .tag.placeholder { background: #fde2c8; color: #8a3d00; }
+  .preview-tile .tile-head .tag.video { background: #ede9fe; color: #5b21b6; }
+  .preview-tile iframe { width: 100%; height: 420px; border: 0; display: block; background: #fff; }
+  .video-placeholder { height: 420px; background: linear-gradient(135deg, #1f2c3a 0%, #0e1c2f 100%); color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; position: relative; }
+  .video-placeholder::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0 12px, transparent 12px 24px); pointer-events: none; }
+  .video-placeholder .play { width: 70px; height: 70px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #1f3a25; font-size: 28px; margin-bottom: 18px; box-shadow: 0 8px 24px rgba(0,0,0,0.3); z-index: 1; }
+  .video-placeholder h5 { margin: 0 0 6px; font-size: 16px; z-index: 1; }
+  .video-placeholder .sub { color: #c4cdd6; font-size: 13px; max-width: 360px; z-index: 1; }
+  .video-placeholder .tag { background: rgba(196,255,177,0.18); border: 1px solid var(--accent); color: var(--accent); font-size: 10px; padding: 4px 10px; border-radius: 4px; font-weight: 600; letter-spacing: 0.6px; margin-top: 14px; z-index: 1; }
+  .script-card { padding: 16px 18px; }
+  .script-card h5 { font-size: 13px; margin: 0 0 8px; color: var(--text); font-weight: 700; }
+  .script-card ol { margin: 0; padding-left: 18px; }
+  .script-card li { font-size: 12.5px; color: var(--text-muted); line-height: 1.6; margin-bottom: 4px; }
+  .script-card code { background: #eef0f3; padding: 1px 6px; border-radius: 3px; font-size: 12px; }
+  .annotation { margin: 18px 36px 28px; background: #fffaef; border: 1px solid #f3e0a7; border-radius: 8px; padding: 18px 22px; font-size: 13px; color: #6b5400; }
+  .annotation strong { color: #4a3a00; }
+  .scaling { margin: 0 36px 50px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 8px; padding: 22px 26px; }
+  .scaling h3 { margin: 0 0 6px; font-size: 17px; color: var(--text); }
+  .scaling .lead { margin: 0 0 16px; color: var(--text-muted); font-size: 13px; }
+  .scaling .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .scaling .item { background: #f7f9fa; border: 1px solid var(--card-border); border-radius: 6px; padding: 14px 16px; }
+  .scaling .item h4 { margin: 0 0 6px; font-size: 13px; color: var(--text); display: flex; align-items: center; gap: 8px; }
+  .scaling .item h4::before { content: '+'; background: var(--accent); color: #1f3a25; width: 18px; height: 18px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; }
+  .scaling .item p { margin: 0; font-size: 12.5px; color: var(--text-muted); line-height: 1.55; }
+  .scaling .item .where { color: var(--text); font-weight: 600; }
+  .section-divider { margin: 0 36px 22px; border: 0; border-top: 1px dashed #c9d1dc; }
+</style>
+</head>
+<body>
+
+<div class="mockup-banner">
+  Mockup &mdash; proposed new Titan course "Implement Microsoft Purview Data Security"
+  <span>Layout mirrors a real Titan course interior. Module previews include the live design tool + sample placeholder videos.</span>
+</div>
+
+<div class="shell">
+  <nav class="mini-rail">
+    <div class="ico" title="Dashboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 17l5-5 4 4 6-7 3 3"/></svg></div>
+    <div class="ico" title="Home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 10l8-7 8 7v10a1 1 0 01-1 1h-5v-7H10v7H5a1 1 0 01-1-1V10z"/></svg></div>
+    <div class="ico active" title="Modules"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.5 6h7M6 8.5v7M18 8.5v7M8.5 18h7"/></svg></div>
+    <div class="ico" title="Profile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg></div>
+  </nav>
+  <aside class="side-rail">
+    <div class="item active"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9h16M9 9v11"/></svg> Modules</div>
+    <div class="item"><svg viewBox="0 0 24 24"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg> Assessments</div>
+    <div class="item"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-4 3-7 7-7s7 3 7 7"/></svg> Instructors</div>
+  </aside>
+  <div class="main">
+    <div class="topbar">
+      <h1>Implement Microsoft Purview Data Security</h1>
+      <div class="right">
+        <div class="icon" title="Messages"><svg viewBox="0 0 24 24"><path d="M3 7l9 6 9-6"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg></div>
+        <div class="icon bell" title="Notifications"><svg viewBox="0 0 24 24"><path d="M6 18h12l-1.5-2v-5a4.5 4.5 0 00-9 0v5L6 18z"/><path d="M10 21h4"/></svg><span class="dot">2</span></div>
+        <div class="user"><span>Hitesh J.</span><div class="avatar"></div></div>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="modules-pane">
+        <h2>Modules</h2>
+        <div class="sub">Modules and their sections must be completed in order.</div>
+        <div class="module-grid">
+
+          <div class="module-card">
+            <div class="image m1"></div>
+            <div class="new-pill">NEW</div>
+            <div class="body">
+              <h3>1. Recommend and deploy sensitivity labels</h3>
+              <p>Use the SMB Data Security Guided Assistant to recommend the right Microsoft Purview sensitivity labels for the customer's industry, then deploy the labels into the tenant using the Microsoft Purview Best Practice Deployment Toolkit. Anchored by Maya, a clinic operations lead.</p>
+            </div>
+            <div class="footer">
+              <a class="status start" href="#module-1">
+                <svg viewBox="0 0 12 12" fill="currentColor"><path d="M3 2l7 4-7 4z"/></svg>
+                0% Start
+              </a>
+              <span class="section-count">2 sections</span>
+            </div>
+          </div>
+
+          <div class="module-card">
+            <div class="image m2"></div>
+            <div class="new-pill">NEW</div>
+            <div class="body">
+              <h3>2. Recommend and deploy data loss prevention policies</h3>
+              <p>Use the SMB Data Security Guided Assistant to configure DLP enforcement (scope, posture, exceptions, notifications) for the labels recommended in Module 1, then deploy the two Microsoft Purview DLP policies (Exchange Online + SharePoint/OneDrive) into the tenant. Includes the multi-tenant deployment pattern.</p>
+            </div>
+            <div class="footer">
+              <span class="status locked">Locked
+                <svg viewBox="0 0 12 12" fill="currentColor"><rect x="3" y="6" width="6" height="5" rx="1"/><path d="M4.5 6V4.5a1.5 1.5 0 013 0V6" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+              </span>
+              <span class="section-count">2 sections</span>
+            </div>
+          </div>
+
+          <div class="module-card future">
+            <div class="image placeholder"></div>
+            <div class="body">
+              <h3>3. (Future) Insider Risk / Endpoint DLP / eDiscovery</h3>
+              <p>Future modules slot in here as the Microsoft Purview Suite add-on capabilities become a partner motion. Same numbered pattern; nothing existing changes.</p>
+            </div>
+            <div class="footer">
+              <span class="status locked">Not yet added</span>
+              <span class="section-count">&mdash;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="side-info">
+        <div class="info-card">
+          <h4>Progress</h4>
+          <div class="progress-ring"><svg viewBox="0 0 80 80"><circle class="bg" cx="40" cy="40" r="34"/></svg><div class="pct">0%</div></div>
+        </div>
+        <div class="info-card"><h4><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 9h16M8 3v4M16 3v4"/></svg> To-do</h4><div class="none-row">No assessments configured</div></div>
+        <div class="info-card"><h4><svg viewBox="0 0 24 24"><path d="M3 11l18-7-3 18-7-7L3 11z"/></svg> Announcements</h4><div class="none-row">None</div></div>
+        <div class="info-card"><h4><svg viewBox="0 0 24 24"><path d="M5 12h14M5 6h14M5 18h14"/></svg> Status</h4><div class="none-row">Mockup &mdash; for review</div></div>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+    <div class="preview-section" id="module-1">
+      <div class="head">
+        <div class="module-num">MODULE 1 PREVIEW &middot; ~5 MIN</div>
+        <h2>Recommend and deploy sensitivity labels</h2>
+        <p class="lead">What the partner watches inside the module. Two sections: (1) design recommendations using the live SMB Data Security Guided Assistant, (2) deployment walkthrough using the Microsoft Purview Best Practice Deployment Toolkit.</p>
+      </div>
+      <div class="preview-body">
+        <h4>Section 1 of 2 &mdash; Design the label recommendation</h4>
+        <div class="preview-grid">
+          <div class="preview-tile">
+            <div class="tile-head">
+              <div class="label">Live tool embed: SMB Data Security Guided Assistant</div>
+              <div class="tag live">Live tool</div>
+            </div>
+            <iframe src="https://cj-scott.github.io/GuidedLabelingAssistant_v2/" loading="lazy" title="SMB Data Security Guided Assistant"></iframe>
+          </div>
+          <div class="preview-tile">
+            <div class="tile-head">
+              <div class="label">Section script (Maya's clinic scenario)</div>
+              <div class="tag placeholder">Outline</div>
+            </div>
+            <div class="script-card">
+              <h5>What Maya does on screen (~2 min, narrated)</h5>
+              <ol>
+                <li>Opens the SMB Data Security Guided Assistant and picks "Recommend sensitivity labels."</li>
+                <li>Sets industry context: <strong>Healthcare / clinics</strong>; data types include patient identifiers and clinical notes.</li>
+                <li>Answers the 6-question decision flow about regulation, sharing scope, and recipient trust.</li>
+                <li>Lands on <strong>Highly Confidential &mdash; All Employees</strong> with rationale shown.</li>
+                <li>Exports the recommendation pack (PDF + JSON) as the customer-ready artifact.</li>
+              </ol>
+              <h5 style="margin-top:14px;">Why this matters at a customer</h5>
+              <ol>
+                <li>Partners walk in with a defensible label recommendation instead of a blank policy.</li>
+                <li>The same export becomes the input to the deployment in Section 2.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <h4 style="margin-top:24px;">Section 2 of 2 &mdash; Deploy the labels to the tenant</h4>
+        <div class="preview-grid">
+          <div class="preview-tile">
+            <div class="tile-head"><div class="label">Sample walkthrough video (placeholder)</div><div class="tag video">~3 min</div></div>
+            <div class="video-placeholder">
+              <div class="play">&#9654;</div>
+              <h5>PowerShell deployment walkthrough</h5>
+              <div class="sub">Maya's labels are deployed to the sandbox tenant using the Microsoft Purview Best Practice Deployment Toolkit (-WhatIf preview, then real run).</div>
+              <div class="tag">PLACEHOLDER &middot; TO BE RECORDED</div>
+            </div>
+          </div>
+          <div class="preview-tile">
+            <div class="tile-head"><div class="label">Section script (deployment)</div><div class="tag placeholder">Outline</div></div>
+            <div class="script-card">
+              <h5>What the partner watches (~3 min, screencast)</h5>
+              <ol>
+                <li>Open the <strong>Microsoft Purview Best Practice Deployment Toolkit</strong> repo. Confirm PowerShell 7 and tenant-admin credentials.</li>
+                <li>Run <code>.\Deploy-PurviewBestPractice.ps1 -BPOnly -WhatIf</code> against the sandbox; read the diff with the customer in mind.</li>
+                <li>Re-run without <code>-WhatIf</code>. Show the labels created in the Microsoft Purview portal: Personal, Public, General, Confidential (with AllEmployees sub-label), Highly Confidential.</li>
+                <li>Highlight encryption defaults on Confidential and Highly Confidential.</li>
+                <li>Confirm the customer can apply labels from Word, Excel, Outlook on the desktop.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+    <div class="preview-section" id="module-2">
+      <div class="head">
+        <div class="module-num">MODULE 2 PREVIEW &middot; ~5 MIN</div>
+        <h2>Recommend and deploy data loss prevention policies</h2>
+        <p class="lead">Unlocks after Module 1. Two sections: (1) configure DLP enforcement using the same Guided Assistant, (2) deploy the two recommended DLP policies for Exchange Online and SharePoint/OneDrive using the same PowerShell toolkit. Includes the multi-tenant pattern (answering Neha's question).</p>
+      </div>
+      <div class="preview-body">
+        <h4>Section 1 of 2 &mdash; Configure DLP enforcement</h4>
+        <div class="preview-grid">
+          <div class="preview-tile">
+            <div class="tile-head"><div class="label">Sample walkthrough video (placeholder)</div><div class="tag video">~2 min</div></div>
+            <div class="video-placeholder">
+              <div class="play">&#9654;</div>
+              <h5>DLP wizard walkthrough</h5>
+              <div class="sub">Continue Maya's flow from Module 1 directly into the DLP wizard: posture, scope, exceptions, notifications, rollout.</div>
+              <div class="tag">PLACEHOLDER &middot; TO BE RECORDED</div>
+            </div>
+          </div>
+          <div class="preview-tile">
+            <div class="tile-head"><div class="label">Section script (design)</div><div class="tag placeholder">Outline</div></div>
+            <div class="script-card">
+              <h5>What Maya does on screen (~2 min, narrated)</h5>
+              <ol>
+                <li>From the Guided Assistant, choose "Configure DLP enforcement" carrying the label set from Module 1.</li>
+                <li>Step through DLP wizard: posture (block vs warn), scope (Exchange, SharePoint, OneDrive), notifications, exceptions.</li>
+                <li>Per-label review: confirm action on Confidential &mdash; All Employees is "block external sharing."</li>
+                <li>Export the DLP policy pack (PDF + encrypted JSON).</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <h4 style="margin-top:24px;">Section 2 of 2 &mdash; Deploy DLP policies + multi-tenant pattern</h4>
+        <div class="preview-grid">
+          <div class="preview-tile">
+            <div class="tile-head"><div class="label">Sample walkthrough video (placeholder)</div><div class="tag video">~3 min</div></div>
+            <div class="video-placeholder">
+              <div class="play">&#9654;</div>
+              <h5>DLP deployment + multi-tenant pattern</h5>
+              <div class="sub">Deploy both DLP policies into the sandbox tenant in simulation mode, then walk the partner-side wrapper pattern that lets the same script run across many customer tenants.</div>
+              <div class="tag">PLACEHOLDER &middot; TO BE RECORDED</div>
+            </div>
+          </div>
+          <div class="preview-tile">
+            <div class="tile-head"><div class="label">Section script (deployment + multi-tenant)</div><div class="tag placeholder">Outline</div></div>
+            <div class="script-card">
+              <h5>What the partner watches (~3 min, screencast)</h5>
+              <ol>
+                <li>Re-run <code>.\Deploy-PurviewBestPractice.ps1</code> &mdash; observe the two DLP policies created: one for Exchange, one for SharePoint + OneDrive. Both block external sharing of <code>Confidential\AllEmployees</code>.</li>
+                <li>Show why match condition uses the label <strong>GUID</strong> (not the display name) so rename does not break the policy.</li>
+                <li>Walk the Change Management Playbook: simulation first, then Day 0 / Day 5 / Day 30 promote-from-simulation gate.</li>
+                <li>Multi-tenant pattern: partner-side loop iterating customer tenants with delegated admin / GDAP context. Note that the script is intentionally single-tenant; multi-tenant is the wrapper around it.</li>
+                <li>Validate via Microsoft Purview portal: policies published, DLP simulation events flowing.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="annotation">
+      <strong>How to read this mockup.</strong>
+      Top half shows the new course landing page exactly as it would appear inside Titan. The two preview sections below show what each module looks like when a partner clicks Start &mdash; including the live SMB Data Security Guided Assistant embedded as the design tool, and placeholder video tiles where the recorded walkthroughs will sit. Naming follows Microsoft Learn terminology (sensitivity labels, data loss prevention policies, Microsoft Purview). Tool names appear only inside section content, never in titles, so future tool renames do not break the course.
+    </div>
+
+    <div class="scaling">
+      <h3>How this scales when more assets ship</h3>
+      <p class="lead">Modules are sequentially numbered inside the course. Each one is an Articulate Rise SCORM package (same authoring pattern as the existing 4.5-hour Specialize Data Security Consultation course in journey 46, which grew from one module to five over time).</p>
+      <div class="grid">
+        <div class="item"><h4>Insider Risk becomes a partner motion</h4><p>Becomes <span class="where">Module 3 inside this course</span>. Same Rise template. Tagged as requiring the Microsoft Purview Suite add-on inside the module content.</p></div>
+        <div class="item"><h4>Endpoint DLP joins the deployment baseline</h4><p>Becomes <span class="where">a new section inside Module 2</span>, or <span class="where">Module 4</span> if it grows large. No new course needed.</p></div>
+        <div class="item"><h4>eDiscovery walkthrough is requested</h4><p>Becomes <span class="where">Module 5 inside this course</span>, or a sibling course in the same Tech Deal Ready journey if the depth warrants.</p></div>
+        <div class="item"><h4>An assessment becomes mandatory</h4><p>Added as the final numbered Module (matches the Consultation course pattern: <em>"Post-training Skills Assessment"</em>) and surfaces on the Assessments tab automatically.</p></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
