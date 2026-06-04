@@ -9,325 +9,291 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --rail: #284a48; --rail-icon: #c4ffb1;
-    --side-rail-bg: #ffffff; --side-rail-border: #e4e6e9;
-    --side-rail-active-text: #1f2c3a; --side-rail-text: #6f7a86; --side-rail-hover: #f6f7f9;
-    --page-bg: #eef1f4; --card-bg: #ffffff; --card-border: #e6e9ec;
-    --text: #1f2c3a; --text-muted: #6f7a86; --text-soft: #94a0ad;
-    --topbar-bg: #ffffff;
-    --accent: #c4ffb1; --accent-dark: #1f3a25;
-    --mockup-banner-bg: #fde2c8; --mockup-banner-text: #8a3d00; --mockup-border: #f0c89a;
-    --hero-bg: linear-gradient(135deg, #1f2c3a 0%, #0e1c2f 100%);
-    --tag-now-bg: #d1fae5; --tag-now-text: #065f46;
-    --tag-next-bg: #fef3c7; --tag-next-text: #92400e;
-    --tag-future-bg: #e5e7eb; --tag-future-text: #4b5563;
+    --header-bg: #0e2438;
+    --header-text: #ffffff;
+    --header-muted: #b5c0cc;
+    --teal: #284a48;
+    --teal-dark: #1f3a39;
+    --teal-light: #6ba59e;
+    --accent: #c4ffb1;
+    --page-bg: #f5f6f8;
+    --card-bg: #ffffff;
+    --card-border: #e6e9ec;
+    --row-border: #eef1f4;
+    --text: #1f2c3a;
+    --text-muted: #6f7a86;
+    --text-soft: #94a0ad;
+    --link-green: #2c7a5e;
+    --pill-yellow-bg: #fef3c7;
+    --pill-yellow-text: #92400e;
+    --pill-gray-bg: #f1f4f7;
+    --pill-gray-text: #4b5563;
+    --pill-green-bg: #d1fae5;
+    --pill-green-text: #065f46;
+    --mockup-banner-bg: #fde2c8;
+    --mockup-banner-text: #8a3d00;
+    --mockup-border: #f0c89a;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
   body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--page-bg); color: var(--text); line-height: 1.5; font-size: 14px; }
+
   .mockup-banner { background: var(--mockup-banner-bg); color: var(--mockup-banner-text); padding: 10px 20px; text-align: center; font-weight: 600; font-size: 13px; letter-spacing: 0.4px; text-transform: uppercase; border-bottom: 1px solid var(--mockup-border); }
   .mockup-banner span { font-weight: 500; text-transform: none; letter-spacing: 0; margin-left: 10px; opacity: 0.92; }
 
-  .shell { display: flex; min-height: 100vh; }
-  .mini-rail { width: 56px; background: var(--rail); color: var(--rail-icon); display: flex; flex-direction: column; align-items: center; padding-top: 16px; gap: 22px; flex-shrink: 0; }
-  .mini-rail .ico { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; opacity: 0.95; }
-  .mini-rail .ico svg { width: 22px; height: 22px; stroke-width: 2; }
-  .mini-rail .ico.active { background: rgba(196, 255, 177, 0.12); border-radius: 8px; }
-  .side-rail { width: 220px; background: var(--side-rail-bg); border-right: 1px solid var(--side-rail-border); padding: 28px 12px; flex-shrink: 0; }
-  .side-rail .item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-radius: 8px; color: var(--side-rail-text); font-size: 14px; cursor: pointer; margin-bottom: 4px; }
-  .side-rail .item:hover { background: var(--side-rail-hover); }
-  .side-rail .item.active { color: var(--side-rail-active-text); font-weight: 600; box-shadow: inset 3px 0 0 var(--side-rail-active-text); }
-  .side-rail .item svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.6; }
+  /* Top site nav matching Titan */
+  .site-nav { background: #0a1f33; color: #ffffff; padding: 14px 36px; display: flex; align-items: center; justify-content: space-between; }
+  .site-nav .left { display: flex; align-items: center; gap: 14px; font-size: 13px; }
+  .site-nav .left .logo { font-weight: 700; letter-spacing: 0.4px; }
+  .site-nav .left .sep { color: #ffffff; opacity: 0.3; }
+  .site-nav .left .sub { font-weight: 600; color: var(--accent); }
+  .site-nav .left .sponsor { color: var(--header-muted); font-size: 12px; margin-left: 14px; }
+  .site-nav .right { display: flex; align-items: center; gap: 28px; font-size: 13px; }
+  .site-nav .right a { color: #ffffff; text-decoration: none; opacity: 0.9; }
+  .site-nav .right a:hover { opacity: 1; }
+  .site-nav .right .avatar { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, #2c7a5e, #1a4f3a); color: #ffffff; font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--accent); }
 
-  .main { flex: 1; min-width: 0; }
-  .topbar { background: var(--topbar-bg); display: flex; align-items: center; justify-content: space-between; padding: 14px 28px; border-bottom: 1px solid var(--side-rail-border); }
-  .topbar h1 { font-size: 18px; margin: 0; color: var(--text); font-weight: 700; }
-  .topbar .right { display: flex; align-items: center; gap: 22px; color: var(--text-soft); }
-  .topbar .right .icon svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.8; }
-  .topbar .right .user { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text); }
-  .topbar .right .user .avatar { width: 30px; height: 30px; background: linear-gradient(135deg, #66b6c5, #4992a7); border-radius: 50%; }
+  /* Dark header section */
+  .journey-header { background: var(--header-bg); color: var(--header-text); padding: 30px 36px 38px; }
+  .journey-header .breadcrumb { font-size: 13px; color: var(--header-muted); display: inline-flex; align-items: center; gap: 6px; margin-bottom: 22px; text-decoration: none; }
+  .journey-header .breadcrumb:hover { color: white; }
+  .journey-header .label-pill { display: inline-block; background: var(--teal); color: var(--accent); font-size: 12px; font-weight: 600; padding: 5px 14px; border-radius: 16px; margin-bottom: 16px; }
+  .journey-header h1 { margin: 0 0 18px; font-size: 32px; font-weight: 700; color: #ffffff; max-width: 900px; line-height: 1.25; }
+  .journey-header .key-label { font-size: 11px; font-weight: 700; color: #ffd966; letter-spacing: 1px; margin-bottom: 8px; display: block; }
+  .journey-header .outcomes { font-size: 13.5px; color: var(--header-muted); margin: 0 0 18px; max-width: 1100px; line-height: 1.6; }
+  .journey-header .stat-pills { display: flex; gap: 10px; margin-bottom: 18px; }
+  .journey-header .stat-pill { background: transparent; border: 1px solid rgba(255,255,255,0.18); color: #ffffff; padding: 7px 14px; border-radius: 16px; font-size: 12.5px; display: inline-flex; align-items: center; gap: 8px; }
+  .journey-header .faq-btn { display: inline-block; background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 6px 22px; border-radius: 18px; font-size: 12px; font-weight: 600; letter-spacing: 0.4px; cursor: pointer; }
 
-  .crumbs { padding: 16px 36px 0; color: var(--text-muted); font-size: 12px; }
-  .crumbs a { color: var(--text-muted); text-decoration: none; }
-  .crumbs a:hover { color: var(--text); }
+  /* Course reward badge card (centered, between header and learning path) */
+  .reward-wrap { display: flex; justify-content: center; padding: 28px 36px 0; }
+  .reward-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 8px; padding: 14px 22px; display: flex; align-items: center; gap: 18px; max-width: 480px; }
+  .reward-card .badge-icon { width: 44px; height: 44px; background: linear-gradient(135deg, #4a90a4, #2c5f72); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 22px; flex-shrink: 0; }
+  .reward-card .meta .label { font-size: 10px; font-weight: 700; color: var(--text-muted); letter-spacing: 0.8px; }
+  .reward-card .meta .name { font-size: 13px; font-weight: 600; color: var(--teal); margin-top: 2px; line-height: 1.35; }
 
-  .hero { margin: 14px 36px 28px; background: var(--hero-bg); border-radius: 12px; padding: 36px 40px; color: white; position: relative; overflow: hidden; }
-  .hero::after { content: ''; position: absolute; top: -40px; right: -40px; width: 240px; height: 240px; background: radial-gradient(circle, rgba(196,255,177,0.18), transparent 70%); pointer-events: none; }
-  .hero .badges { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
-  .hero .badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(196,255,177,0.16); border: 1px solid rgba(196,255,177,0.35); color: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; }
-  .hero h2 { margin: 0 0 12px; font-size: 30px; font-weight: 700; line-height: 1.2; max-width: 760px; }
-  .hero .lead { margin: 0 0 22px; font-size: 15px; color: #c4cdd6; max-width: 720px; line-height: 1.6; }
-  .hero .stats { display: flex; gap: 36px; flex-wrap: wrap; }
-  .hero .stat { display: flex; flex-direction: column; gap: 2px; }
-  .hero .stat .num { font-size: 26px; font-weight: 700; color: var(--accent); }
-  .hero .stat .label { font-size: 11px; color: #c4cdd6; text-transform: uppercase; letter-spacing: 0.6px; }
+  /* Learning Path section */
+  .learning-wrap { padding: 30px 36px 14px; }
+  .learning-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 8px; overflow: hidden; max-width: 1180px; margin: 0 auto; }
+  .learning-head { background: var(--teal); color: #ffffff; padding: 14px 26px; display: flex; align-items: flex-start; justify-content: space-between; }
+  .learning-head h3 { margin: 0 0 2px; font-size: 17px; color: #ffffff; font-weight: 700; }
+  .learning-head .sub { color: rgba(255,255,255,0.85); font-size: 12.5px; }
+  .learning-head .prep { color: rgba(255,255,255,0.85); font-size: 12.5px; text-align: right; }
+  .learning-head .prep strong { color: var(--accent); font-size: 13px; display: block; }
+  .learning-head .prep em { color: rgba(255,255,255,0.7); font-size: 11px; font-style: italic; }
 
-  .section-head { margin: 0 36px 14px; display: flex; align-items: baseline; justify-content: space-between; }
-  .section-head h3 { margin: 0; font-size: 16px; color: var(--text); }
-  .section-head .meta { font-size: 12px; color: var(--text-muted); }
+  .course-row { display: grid; grid-template-columns: 1fr 220px; padding: 18px 26px; border-bottom: 1px solid var(--row-border); gap: 16px; align-items: center; }
+  .course-row:last-child { border-bottom: 0; }
+  .course-row .left { display: flex; align-items: center; gap: 16px; }
+  .course-row .circle { width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid #c7d0d8; flex-shrink: 0; }
+  .course-row .info h4 { margin: 0 0 6px; font-size: 14px; color: var(--text); font-weight: 600; }
+  .course-row .info .meta { font-size: 11.5px; color: var(--text-muted); display: flex; align-items: center; gap: 12px; }
+  .course-row .info .meta .duration { display: inline-flex; align-items: center; gap: 5px; }
+  .course-row .info .meta .duration::before { content: '\1F551'; font-size: 11px; }
+  .course-row .info .meta .sep { color: var(--text-soft); }
+  .course-row .info .meta .tag { color: var(--link-green); font-weight: 600; }
+  .course-row .right { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .course-row .status { font-size: 10.5px; font-weight: 700; letter-spacing: 0.7px; padding: 6px 18px; border-radius: 4px; text-align: center; min-width: 130px; }
+  .course-row .status.in-progress { background: var(--pill-yellow-bg); color: var(--pill-yellow-text); }
+  .course-row .status.not-started { background: var(--pill-gray-bg); color: var(--pill-gray-text); }
+  .course-row .status.complete { background: var(--pill-green-bg); color: var(--pill-green-text); }
+  .course-row .action { display: inline-flex; align-items: center; justify-content: center; gap: 6px; background: #ffffff; border: 1px solid var(--teal-light); color: var(--teal); padding: 6px 22px; border-radius: 18px; font-size: 12px; font-weight: 600; text-decoration: none; min-width: 130px; }
+  .course-row .action:hover { border-color: var(--teal); }
+  .course-row .action svg { width: 12px; height: 12px; }
 
-  .courses { margin: 0 36px 36px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
-  .course-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; position: relative; }
-  .course-card.now { border-color: #b5f095; box-shadow: 0 2px 12px rgba(34, 84, 56, 0.08); }
-  .course-card.future { opacity: 0.85; }
-  .course-card .strip { height: 90px; position: relative; overflow: hidden; }
-  .course-card .strip.s1 { background: linear-gradient(135deg, #028090 0%, #00a896 100%); }
-  .course-card .strip.s2 { background: linear-gradient(135deg, #e08e00 0%, #b35a00 100%); }
-  .course-card .strip.s3 { background: linear-gradient(135deg, #6f7a86 0%, #4a5563 100%); }
-  .course-card .strip .icon { position: absolute; right: 22px; bottom: 14px; font-size: 38px; opacity: 0.85; }
-  .course-card .strip .num { position: absolute; left: 22px; top: 14px; color: white; font-size: 11px; font-weight: 700; letter-spacing: 0.6px; opacity: 0.85; }
-  .course-card .body { padding: 16px 20px 4px; flex: 1; display: flex; flex-direction: column; }
-  .course-card .tag-row { display: flex; gap: 8px; margin-bottom: 10px; align-items: center; }
-  .course-card .tag { font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 4px; letter-spacing: 0.4px; text-transform: uppercase; }
-  .course-card .tag.now { background: var(--tag-now-bg); color: var(--tag-now-text); }
-  .course-card .tag.next { background: var(--tag-next-bg); color: var(--tag-next-text); }
-  .course-card .tag.future { background: var(--tag-future-bg); color: var(--tag-future-text); }
-  .course-card .duration { font-size: 11px; color: var(--text-soft); margin-left: auto; }
-  .course-card h4 { margin: 0 0 6px; font-size: 16px; font-weight: 700; color: var(--text); line-height: 1.3; }
-  .course-card .desc { margin: 0 0 12px; font-size: 13px; color: var(--text-muted); line-height: 1.55; flex: 1; }
-  .course-card .modules { display: flex; gap: 14px; margin-bottom: 10px; padding-top: 10px; border-top: 1px dashed var(--card-border); }
-  .course-card .mod { font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
-  .course-card .mod .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
-  .course-card .mod strong { color: var(--text); font-weight: 600; }
-  .course-card .covers { font-size: 11px; color: var(--text-soft); font-style: italic; margin: 0 0 14px; padding-top: 4px; }
-  .course-card .footer { display: flex; align-items: center; justify-content: space-between; padding: 0 20px 16px; }
-  .course-card .footer .open { display: inline-flex; align-items: center; gap: 6px; background: var(--accent); color: var(--accent-dark); padding: 8px 18px; border-radius: 18px; font-size: 12.5px; font-weight: 600; text-decoration: none; }
-  .course-card .footer .open:hover { background: #b5f095; }
-  .course-card .footer .open svg { width: 12px; height: 12px; }
-  .course-card .footer .pending { font-size: 11.5px; color: var(--text-soft); font-style: italic; }
+  .course-row.reward-inline .info { width: 100%; }
+  .course-row.reward-inline .reward-inline-card { margin-top: 12px; display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #f8fafc; border: 1px solid var(--card-border); border-radius: 6px; }
+  .course-row.reward-inline .reward-inline-card .ico { width: 32px; height: 32px; background: linear-gradient(135deg, #4a90a4, #2c5f72); border-radius: 4px; flex-shrink: 0; }
+  .course-row.reward-inline .reward-inline-card .text h5 { margin: 0; font-size: 12px; font-weight: 600; color: var(--teal); }
+  .course-row.reward-inline .reward-inline-card .text p { margin: 2px 0 0; font-size: 11px; color: var(--text-muted); }
 
-  .roadmap { margin: 0 36px 50px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 10px; padding: 22px 26px; }
-  .roadmap h3 { margin: 0 0 6px; font-size: 16px; color: var(--text); }
-  .roadmap .lead { margin: 0 0 18px; color: var(--text-muted); font-size: 13px; }
-  .roadmap table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  .roadmap th { text-align: left; padding: 10px 12px; background: #1f2c3a; color: white; font-weight: 600; font-size: 12px; }
-  .roadmap th.c { text-align: center; }
-  .roadmap td { padding: 10px 12px; border-bottom: 1px solid var(--card-border); vertical-align: middle; }
-  .roadmap tr.now td { background: #f0fdf4; }
-  .roadmap .chip { display: inline-block; padding: 3px 9px; border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; }
-  .roadmap .chip.now { background: var(--tag-now-bg); color: var(--tag-now-text); }
-  .roadmap .chip.next { background: var(--tag-next-bg); color: var(--tag-next-text); }
-  .roadmap .chip.future { background: var(--tag-future-bg); color: var(--tag-future-text); }
-  .roadmap .modules-cell { text-align: center; color: var(--text-muted); font-size: 12.5px; }
-  .roadmap .modules-cell strong { color: var(--text); }
-  .roadmap .coverage { font-style: italic; color: var(--text-muted); font-size: 12.5px; }
-  .roadmap tr.now .coverage { color: var(--text); font-style: normal; }
+  /* Browse button */
+  .browse-wrap { display: flex; justify-content: center; padding: 24px 36px 36px; }
+  .browse-btn { background: #ffffff; border: 1.5px solid var(--teal); color: var(--teal); padding: 10px 26px; border-radius: 22px; font-size: 13px; font-weight: 600; text-decoration: none; }
 
-  .pause { margin: 0 36px 50px; font-size: 12px; color: var(--text-soft); text-align: center; line-height: 1.7; }
-  .pause a { color: var(--text-muted); }
+  /* Planned Roadmap section (clearly separate, after Browse) */
+  .roadmap-divider { margin: 0 36px 24px; border: 0; border-top: 2px dashed #cdd5dc; }
+  .roadmap { max-width: 1180px; margin: 0 auto 36px; padding: 0 36px; }
+  .roadmap .roadmap-label { display: inline-block; background: #ffe9d6; color: #8a3d00; font-size: 10.5px; font-weight: 700; letter-spacing: 0.8px; padding: 4px 12px; border-radius: 4px; margin-bottom: 12px; }
+  .roadmap h3 { margin: 0 0 6px; font-size: 22px; color: var(--text); font-weight: 700; }
+  .roadmap .roadmap-lead { color: var(--text-muted); font-size: 13.5px; margin: 0 0 22px; max-width: 800px; line-height: 1.6; }
+  .roadmap-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 8px; overflow: hidden; }
+  .roadmap-row { display: grid; grid-template-columns: 110px 1fr 200px 1fr; padding: 16px 22px; border-bottom: 1px solid var(--row-border); gap: 14px; align-items: center; }
+  .roadmap-row:last-child { border-bottom: 0; }
+  .roadmap-row .phase { font-size: 10.5px; font-weight: 700; letter-spacing: 0.8px; padding: 5px 12px; border-radius: 4px; text-align: center; }
+  .roadmap-row.next .phase { background: var(--pill-yellow-bg); color: var(--pill-yellow-text); }
+  .roadmap-row.future .phase { background: var(--pill-gray-bg); color: var(--pill-gray-text); }
+  .roadmap-row .course-name { font-size: 13.5px; color: var(--text); font-weight: 600; }
+  .roadmap-row .modules { font-size: 12.5px; color: var(--text-muted); text-align: center; }
+  .roadmap-row .coverage { font-size: 12px; color: var(--text-muted); font-style: italic; }
+
+  /* Footer */
+  .site-footer { background: var(--header-bg); color: #ffffff; padding: 26px 36px; font-size: 12.5px; }
+  .site-footer .row { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; }
+  .site-footer .row a { color: #ffffff; opacity: 0.85; text-decoration: none; margin-right: 18px; }
+  .site-footer .copy { text-align: center; padding-top: 16px; opacity: 0.6; font-size: 11.5px; }
 </style>
 </head>
 <body>
 
 <div class="mockup-banner">
   Mockup &mdash; proposed new Titan journey "Accelerate Microsoft Security Implementations"
-  <span>Layout mirrors a real Titan Tech Deal Ready journey landing.</span>
+  <span>Faithful to a real Tech Deal Ready Titan journey landing layout.</span>
 </div>
 
-<div class="shell">
-  <nav class="mini-rail" aria-label="Primary">
-    <div class="ico active" title="Home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 12 12 3l9 9"/><path d="M5 10v10h14V10"/></svg></div>
-    <div class="ico" title="Journeys"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></div>
-    <div class="ico" title="Achievements"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="9" r="6"/><path d="M9 15l-2 6 5-3 5 3-2-6"/></svg></div>
-    <div class="ico" title="Resources"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h12l4 4v12H4z"/><path d="M16 4v4h4"/></svg></div>
-  </nav>
+<!-- Site nav -->
+<nav class="site-nav">
+  <div class="left">
+    <span class="logo">Technofocus</span>
+    <span class="sep">|</span>
+    <span class="sub">LevelUp</span>
+    <span class="sponsor">Sponsored by Microsoft</span>
+  </div>
+  <div class="right">
+    <a href="#">Home</a>
+    <a href="#">Courses</a>
+    <a href="#">Learning Journeys</a>
+    <a href="#">English</a>
+    <span class="avatar">HJ</span>
+  </div>
+</nav>
 
-  <aside class="side-rail" aria-label="Secondary">
-    <div class="item"><svg viewBox="0 0 24 24"><path d="M3 12 12 3l9 9"/><path d="M5 10v10h14V10"/></svg> Home</div>
-    <div class="item active"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg> Tech Deal Ready</div>
-    <div class="item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg> Sales Ready</div>
-    <div class="item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg> Project Ready</div>
-    <div class="item"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M9 15l-2 6 5-3 5 3-2-6"/></svg> Achievements</div>
-    <div class="item"><svg viewBox="0 0 24 24"><path d="M4 4h12l4 4v12H4z"/><path d="M16 4v4h4"/></svg> Resources</div>
-  </aside>
+<!-- Dark journey header -->
+<header class="journey-header">
+  <a class="breadcrumb" href="#">&larr; All Learning Journeys</a>
+  <div>
+    <span class="label-pill">Learning Journey</span>
+  </div>
+  <h1>Accelerate Microsoft Security Implementations &ndash; Tech Deal Ready Titan</h1>
+  <span class="key-label">KEY OUTCOMES</span>
+  <p class="outcomes">Help partner security architects ship Microsoft Security implementations at customers faster. Walk through field-built design and deployment toolkits. Cut time-to-deploy with the right configuration baseline. Standardize repeatable customer engagements. Accelerate multi-tenant rollouts. Reduce partner re-work and customer escalations.</p>
+  <div class="stat-pills">
+    <span class="stat-pill">&#x1F4D6; 1 Course</span>
+    <span class="stat-pill">&#x1F551; ~10 Minutes</span>
+  </div>
+  <button class="faq-btn">FAQ</button>
+</header>
 
-  <main class="main">
-    <div class="topbar">
-      <h1>Tech Deal Ready &middot; Security</h1>
-      <div class="right">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></div>
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M14 21a2 2 0 1 1-4 0"/></svg></div>
-        <div class="user"><div class="avatar"></div>Hitesh J.</div>
+<!-- Course Reward badge card -->
+<div class="reward-wrap">
+  <div class="reward-card">
+    <div class="badge-icon">&#x1F3C5;</div>
+    <div class="meta">
+      <div class="label">COURSE REWARD</div>
+      <div class="name">Help customers classify and label sensitive information &mdash; Titan</div>
+    </div>
+  </div>
+</div>
+
+<!-- Learning Path (launch state: just Course 1) -->
+<div class="learning-wrap">
+  <div class="learning-card">
+    <div class="learning-head">
+      <div>
+        <h3>Learning Path</h3>
+        <div class="sub">Complete the following courses to finish this journey.</div>
+      </div>
+      <div class="prep">
+        <strong>Preparation</strong>
+        <em>(Optional)</em>
       </div>
     </div>
 
-    <div class="crumbs"><a href="#">Home</a> &nbsp;/&nbsp; <a href="#">Tech Deal Ready</a> &nbsp;/&nbsp; <a href="#">Security</a> &nbsp;/&nbsp; <span style="color:var(--text)">Accelerate Microsoft Security Implementations</span></div>
-
-    <section class="hero">
-      <div class="badges">
-        <span class="badge">New Journey</span>
-        <span class="badge">Tech Deal Ready</span>
-        <span class="badge">Security</span>
-      </div>
-      <h2>Accelerate Microsoft Security Implementations</h2>
-      <p class="lead">Hands-on, field-built implementation toolkits for Microsoft Security. Each course pairs a <strong style="color:#fff">Design</strong> module (walk through the planning toolkit) with a <strong style="color:#fff">Deploy</strong> module (walk through the configuration toolkit). Built for partner security architects who already know <em>what</em> to deliver and need help getting it shipped at the customer.</p>
-      <div class="stats">
-        <div class="stat"><span class="num">1</span><span class="label">Course launching now</span></div>
-        <div class="stat"><span class="num">6+</span><span class="label">Future courses planned</span></div>
-        <div class="stat"><span class="num">~10 min</span><span class="label">Per course (avg)</span></div>
-        <div class="stat"><span class="num">0</span><span class="label">Existing journeys disrupted</span></div>
-      </div>
-    </section>
-
-    <div class="section-head">
-      <h3>Courses in this journey</h3>
-      <span class="meta">1 live &nbsp;&middot;&nbsp; 1 next &nbsp;&middot;&nbsp; 5 future (illustrative)</span>
-    </div>
-
-    <div class="courses">
-
-      <!-- Course 1 NOW -->
-      <article class="course-card now">
-        <div class="strip s1">
-          <span class="num">COURSE 1</span>
-          <span class="icon">&#x1F50F;</span>
-        </div>
-        <div class="body">
-          <div class="tag-row">
-            <span class="tag now">Launching now</span>
-            <span class="duration">~10 min</span>
-          </div>
+    <div class="course-row reward-inline">
+      <div class="left">
+        <div class="circle"></div>
+        <div class="info">
           <h4>Help customers classify and label sensitive information</h4>
-          <p class="desc">Walk through designing a sensitivity-label taxonomy with the community Guided Labeling Assistant, then deploy labels and protection settings using the community PowerShell toolkit. Built for partner SAs implementing this at SMB and mid-market customers.</p>
-          <div class="modules">
-            <div class="mod"><span class="dot"></span><strong>Module 1:</strong>&nbsp;Design</div>
-            <div class="mod"><span class="dot"></span><strong>Module 2:</strong>&nbsp;Deploy</div>
+          <div class="meta">
+            <span class="duration">~10 Minutes</span>
+            <span class="sep">|</span>
+            <span class="tag">Tech Deal Ready</span>
           </div>
-          <p class="covers">Covers: Microsoft Purview &middot; Sensitivity labels &middot; Information Protection (MIP)</p>
-        </div>
-        <div class="footer">
-          <a class="open" href="course-1.html">Open course <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-        </div>
-      </article>
-
-      <!-- Course 2 NEXT -->
-      <article class="course-card future">
-        <div class="strip s2">
-          <span class="num">COURSE 2</span>
-          <span class="icon">&#x1F6E1;</span>
-        </div>
-        <div class="body">
-          <div class="tag-row">
-            <span class="tag next">Next (Phase 2)</span>
-            <span class="duration">~10 min</span>
+          <div class="reward-inline-card">
+            <div class="ico"></div>
+            <div class="text">
+              <h5>Help customers classify and label sensitive information &mdash; Titan</h5>
+              <p>Complete this course to earn this badge.</p>
+            </div>
           </div>
-          <h4>Stop sensitive data from leaving the tenant</h4>
-          <p class="desc">Design and deploy data loss prevention policies across Exchange, SharePoint, and OneDrive. Same Design + Deploy pattern as Course 1. Ships when the Phase 2 toolkit lands.</p>
-          <div class="modules">
-            <div class="mod"><span class="dot" style="background:#e08e00"></span><strong>Module 1:</strong>&nbsp;Design</div>
-            <div class="mod"><span class="dot" style="background:#e08e00"></span><strong>Module 2:</strong>&nbsp;Deploy</div>
-          </div>
-          <p class="covers">Covers: Microsoft Purview &middot; Data Loss Prevention (DLP)</p>
         </div>
-        <div class="footer">
-          <span class="pending">Ships with Phase 2 toolkit launch</span>
-        </div>
-      </article>
-
-      <!-- Course 3 FUTURE -->
-      <article class="course-card future">
-        <div class="strip s3">
-          <span class="num">COURSE 3</span>
-          <span class="icon">&#x1F575;</span>
-        </div>
-        <div class="body">
-          <div class="tag-row">
-            <span class="tag future">Future (illustrative)</span>
-          </div>
-          <h4>Run an Insider Risk and compliance program</h4>
-          <p class="desc">Design Insider Risk policies and deploy across the tenant. Same 2-module shape.</p>
-          <p class="covers">Covers: Microsoft Purview &middot; Insider Risk Management</p>
-        </div>
-        <div class="footer">
-          <span class="pending">Future course</span>
-        </div>
-      </article>
-
-      <!-- Course 4 FUTURE -->
-      <article class="course-card future">
-        <div class="strip s3">
-          <span class="num">COURSE 4</span>
-          <span class="icon">&#x1F50D;</span>
-        </div>
-        <div class="body">
-          <div class="tag-row">
-            <span class="tag future">Future (illustrative)</span>
-          </div>
-          <h4>Detect and respond at the customer</h4>
-          <p class="desc">Design detection and response workflows; deploy across Defender XDR and Sentinel.</p>
-          <p class="covers">Covers: Microsoft Defender XDR &middot; Microsoft Sentinel</p>
-        </div>
-        <div class="footer">
-          <span class="pending">Future course</span>
-        </div>
-      </article>
-
+      </div>
+      <div class="right">
+        <div class="status not-started">NOT STARTED</div>
+        <a class="action" href="course-1.html">
+          <svg viewBox="0 0 12 12" fill="currentColor"><path d="M3 2l7 4-7 4z"/></svg>
+          Start
+        </a>
+      </div>
     </div>
-
-    <div class="roadmap">
-      <h3>Journey roadmap</h3>
-      <p class="lead">Course titles stay scenario / outcome-named (per Pauline's guideline). Product coverage is surfaced on the course tile and via Titan's Featured Product filter, not in the title.</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Phase</th>
-            <th>Course (scenario-named)</th>
-            <th class="c">Modules</th>
-            <th>Product coverage</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="now">
-            <td><span class="chip now">Phase 1 &middot; Now</span></td>
-            <td><strong>Help customers classify and label sensitive information</strong></td>
-            <td class="modules-cell"><strong>Design + Deploy</strong></td>
-            <td class="coverage">Microsoft Purview MIP, Sensitivity labels</td>
-          </tr>
-          <tr>
-            <td><span class="chip next">Phase 2 &middot; Next</span></td>
-            <td>Stop sensitive data from leaving the tenant</td>
-            <td class="modules-cell">Design + Deploy</td>
-            <td class="coverage">Microsoft Purview DLP (Exchange, SharePoint, OneDrive)</td>
-          </tr>
-          <tr>
-            <td><span class="chip future">Phase 3+ &middot; Future</span></td>
-            <td>Run an Insider Risk and compliance program</td>
-            <td class="modules-cell">Design + Deploy</td>
-            <td class="coverage">Microsoft Purview Insider Risk Management</td>
-          </tr>
-          <tr>
-            <td><span class="chip future">Phase 3+ &middot; Future</span></td>
-            <td>Stand up eDiscovery for the customer</td>
-            <td class="modules-cell">Design + Deploy</td>
-            <td class="coverage">Microsoft Purview eDiscovery</td>
-          </tr>
-          <tr>
-            <td><span class="chip future">Phase 3+ &middot; Future</span></td>
-            <td>Detect and respond at the customer</td>
-            <td class="modules-cell">Design + Deploy</td>
-            <td class="coverage">Microsoft Defender XDR, Microsoft Sentinel</td>
-          </tr>
-          <tr>
-            <td><span class="chip future">Phase 3+ &middot; Future</span></td>
-            <td>Protect customer identities</td>
-            <td class="modules-cell">Design + Deploy</td>
-            <td class="coverage">Microsoft Entra Conditional Access, Identity Protection</td>
-          </tr>
-          <tr>
-            <td><span class="chip future">Phase 3+ &middot; Future</span></td>
-            <td>Secure customer AI and Copilot deployments</td>
-            <td class="modules-cell">Design + Deploy</td>
-            <td class="coverage">Microsoft Purview for Copilot, Defender for AI</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="pause">
-      Click "Open course" on Course 1 above to walk through the interior &middot; <a href="course-1.html">course-1.html</a>
-    </div>
-  </main>
+  </div>
 </div>
+
+<div class="browse-wrap">
+  <a class="browse-btn" href="#">Browse all Journeys</a>
+</div>
+
+<hr class="roadmap-divider">
+
+<!-- Planned Roadmap (clearly separate, not part of the journey at launch) -->
+<section class="roadmap">
+  <span class="roadmap-label">Planned roadmap &mdash; not in the journey yet</span>
+  <h3>What ships into this journey next</h3>
+  <p class="roadmap-lead">At launch, the journey has Course 1 only. Each future course gets added as a new row in the Learning Path above when its toolkit lands. All courses follow the same 2-module pattern (Design then Deploy).</p>
+  <div class="roadmap-card">
+    <div class="roadmap-row next">
+      <div class="phase">PHASE 2 &middot; NEXT</div>
+      <div class="course-name">Stop sensitive data from leaving the tenant</div>
+      <div class="modules">Design + Deploy</div>
+      <div class="coverage">Microsoft Purview DLP (Exchange, SharePoint, OneDrive)</div>
+    </div>
+    <div class="roadmap-row future">
+      <div class="phase">PHASE 3+ &middot; FUTURE</div>
+      <div class="course-name">Run an Insider Risk and compliance program</div>
+      <div class="modules">Design + Deploy</div>
+      <div class="coverage">Microsoft Purview Insider Risk Management</div>
+    </div>
+    <div class="roadmap-row future">
+      <div class="phase">PHASE 3+ &middot; FUTURE</div>
+      <div class="course-name">Stand up eDiscovery for the customer</div>
+      <div class="modules">Design + Deploy</div>
+      <div class="coverage">Microsoft Purview eDiscovery</div>
+    </div>
+    <div class="roadmap-row future">
+      <div class="phase">PHASE 3+ &middot; FUTURE</div>
+      <div class="course-name">Detect and respond at the customer</div>
+      <div class="modules">Design + Deploy</div>
+      <div class="coverage">Microsoft Defender XDR, Microsoft Sentinel</div>
+    </div>
+    <div class="roadmap-row future">
+      <div class="phase">PHASE 3+ &middot; FUTURE</div>
+      <div class="course-name">Protect customer identities</div>
+      <div class="modules">Design + Deploy</div>
+      <div class="coverage">Microsoft Entra Conditional Access, Identity Protection</div>
+    </div>
+    <div class="roadmap-row future">
+      <div class="phase">PHASE 3+ &middot; FUTURE</div>
+      <div class="course-name">Secure customer AI and Copilot deployments</div>
+      <div class="modules">Design + Deploy</div>
+      <div class="coverage">Microsoft Purview for Copilot, Defender for AI</div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="row">
+    <div>
+      <strong>LevelUp</strong> &nbsp;&nbsp;
+      <a href="#">Support</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Technofocus Privacy Statement</a>
+      <a href="#">Trust Center</a>
+    </div>
+    <div style="opacity: 0.7; font-size: 11px;">Sponsored by Microsoft</div>
+  </div>
+  <div class="copy">&copy; 2026 Technofocus. All rights reserved.</div>
+</footer>
 
 </body>
 </html>
