@@ -262,47 +262,23 @@
       <div class="head">
         <div class="module-num">MODULE 1 PREVIEW &middot; ~5 MIN</div>
         <h2>Module 1: Design</h2>
-        <p class="lead">One section. The partner uses the Guided Data Security Assistant to walk Maya's clinic scenario through to a recommended set of sensitivity labels and a DLP enforcement posture, then exports the customer-ready policy artifact.</p>
+        <p class="lead">One section. The partner uses the community Guided Labeling Assistant&apos;s DLP design path to walk a customer scenario through enforcement choices (action, scope, exceptions, end-user notifications), then exports the customer-ready DLP policy spec for Module 2.</p>
       </div>
       <div class="preview-body">
 
-        <div class="opt-label">Two options for how the design content lives inside the section</div>
-        <div class="opt-toggle">
-          <button class="on" data-target="opt-a-m1">Option A &mdash; Embed</button>
-          <button data-target="opt-b-m1">Option B &mdash; Redirect (matches existing Titan pattern)</button>
-        </div>
-
-        <div class="option-block on" id="opt-a-m1">
-          <div class="preview-grid">
-            <div class="preview-tile">
-              <div class="tile-head"><div class="label">Live tool embedded inside the Titan section</div><div class="tag live">Iframe</div></div>
-              <iframe src="https://cj-scott.github.io/GuidedLabelingAssistant_v2/" loading="lazy" title="Guided Data Security Assistant"></iframe>
-            </div>
-            <div class="preview-tile">
-              <div class="tile-head"><div class="label">Walkthrough video on top of the tool</div><div class="tag video">~5 min</div></div>
-              <div class="video-placeholder">
-                <div class="play">&#9654;</div>
-                <h5>DLP design walkthrough</h5>
-                <div class="sub">Narrated walkthrough of the DLP design path: choose enforcement actions, scopes, exceptions, end-user notifications, then export the customer-ready DLP policy spec.</div>
-                <div class="tag">VIDEO PENDING &middot; SPLIT FROM ORIGINAL DESIGN VIDEO</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="option-block" id="opt-b-m1">
+        
           <div class="preview-grid">
             <div class="preview-tile">
               <div class="tile-head"><div class="label">Section content (matches existing Titan course pattern)</div><div class="tag link">Redirect</div></div>
               <div class="redirect-card">
-                <h4>Use the Guided Data Security Assistant</h4>
-                <p>This section walks Maya's clinic scenario. Open the assistant in a new tab, follow the narrated walkthrough video below, then return here and mark complete. (This is the same pattern used by the existing Business Case Builder and Data Security and Privacy video series courses in journey 46.)</p>
+                <h4>Use the community Guided Labeling Assistant (DLP path)</h4>
+                <p>This section opens the same tool used in Course 1, this time on its DLP design path. Walk a customer scenario through enforcement choices, watch the narrated walkthrough video below, then return here and mark complete.</p>
                 <a class="open-tool" href="https://cj-scott.github.io/GuidedLabelingAssistant_v2/" target="_blank" rel="noopener">
                   Open the assistant
                   <svg viewBox="0 0 12 12" fill="currentColor"><path d="M3 9l6-6M5 3h4v4"/></svg>
                 </a>
                 <button class="complete" type="button">Mark complete</button>
-                <div class="helper">The tool opens on its own site (community-built). Partners do not leave Titan permanently; the Complete button stays here.</div>
+                <div class="helper">Tool opens in a new tab on its own site (community-built). The Mark complete button stays in Titan.</div>
               </div>
             </div>
             <div class="preview-tile">
@@ -310,24 +286,24 @@
               <div class="video-placeholder">
                 <div class="play">&#9654;</div>
                 <h5>DLP design walkthrough</h5>
-                <div class="sub">Same narrated walkthrough as Option A.</div>
-                <div class="tag">VIDEO PENDING &middot; SPLIT FROM ORIGINAL DESIGN VIDEO</div>
+                <div class="sub">~5-minute narrated walkthrough of the DLP design path: pick enforcement actions, scope (Exchange, SharePoint, OneDrive), exceptions, end-user notifications, then export the customer-ready DLP policy spec.</div>
+                <div class="tag">VIDEO PENDING &middot; AWAITING DLP DESIGN RECORDING</div>
               </div>
             </div>
           </div>
-        </div>
+        
 
         <div class="preview-tile" style="margin-top: 22px;">
           <div class="tile-head"><div class="label">What the partner watches in the video (script)</div><div class="tag placeholder">Outline</div></div>
           <div class="script-card">
             <h5>5-minute walkthrough &mdash; one continuous take</h5>
             <ol>
-              <li>Open the assistant. Pick <strong>Run Labeling + DLP together</strong> for the combined customer engagement.</li>
-              <li>Set industry context: <strong>Healthcare / clinics</strong>; declare patient identifiers and clinical notes.</li>
-              <li>Walk the label decision flow (6 short questions) and land on a defensible label recommendation.</li>
-              <li>Continue into DLP configuration: choose posture (block external sharing), scope (Exchange, SharePoint, OneDrive), exceptions, notifications.</li>
-              <li>Per-label review: confirm the action on the most sensitive label is <em>block external sharing</em>.</li>
-              <li>Export the customer-ready policy pack (PDF for review, encrypted JSON for deployment in Module 2).</li>
+              <li>Open the community Guided Labeling Assistant. Pick <strong>Configure DLP enforcement</strong>.</li>
+              <li>Confirm prerequisite: Course 1&apos;s sensitivity labels are already deployed in the customer tenant.</li>
+              <li>Choose enforcement action: <strong>block external sharing</strong> of content labelled <code>Confidential\AllEmployees</code>.</li>
+              <li>Choose scope: <strong>Exchange Online</strong> + <strong>SharePoint &amp; OneDrive</strong> (two separate policies per Microsoft guidance).</li>
+              <li>Configure exceptions and end-user notifications (policy tip, sender override allowed with justification, admin notification).</li>
+              <li>Export the customer-ready DLP policy spec. Module 2 will deploy these policies via PowerShell in simulation mode.</li>
             </ol>
           </div>
         </div>
@@ -344,43 +320,19 @@
       </div>
       <div class="preview-body">
 
-        <div class="opt-label">Two options for how the deploy content lives inside the section</div>
-        <div class="opt-toggle">
-          <button class="on" data-target="opt-a-m2">Option A &mdash; Embed</button>
-          <button data-target="opt-b-m2">Option B &mdash; Redirect (matches existing Titan pattern)</button>
-        </div>
-
-        <div class="option-block on" id="opt-a-m2">
-          <div class="preview-grid">
-            <div class="preview-tile">
-              <div class="tile-head"><div class="label">README embedded inside the section</div><div class="tag live">Iframe</div></div>
-              <iframe src="https://github.com/amirjafarian/SMBBestPracticeTool/blob/main/Products/Purview/README.md" loading="lazy" title="Purview Best Practice Deployment Toolkit README"></iframe>
-            </div>
-            <div class="preview-tile">
-              <div class="tile-head"><div class="label">Walkthrough video on top of the README</div><div class="tag video">~5 min</div></div>
-              <div class="video-native">
-                <video controls preload="metadata" playsinline poster="">
-                  <source src="videos/deploy-dlp.mp4" type="video/mp4">
-                  Your browser does not support embedded video. <a href="videos/deploy-dlp.mp4">Download the video</a>.
-                </video>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="option-block" id="opt-b-m2">
+        
           <div class="preview-grid">
             <div class="preview-tile">
               <div class="tile-head"><div class="label">Section content (matches existing Titan course pattern)</div><div class="tag link">Redirect</div></div>
               <div class="redirect-card">
-                <h4>Use the Purview Best Practice Deployment Toolkit</h4>
-                <p>This section walks the deployment. Open the GitHub repo, follow the narrated walkthrough video below as it deploys against a sandbox tenant, then return here and mark complete.</p>
+                <h4>Use the Purview Best Practice Deployment Toolkit (DLP only)</h4>
+                <p>This section opens the same PowerShell toolkit used in Course 1, scoped to DLP only via <code>-SkipTenantSettings -SkipLabels</code>. Watch the narrated walkthrough video below, then return here and mark complete.</p>
                 <a class="open-tool" href="https://github.com/amirjafarian/SMBBestPracticeTool" target="_blank" rel="noopener">
                   Open the GitHub repo
                   <svg viewBox="0 0 12 12" fill="currentColor"><path d="M3 9l6-6M5 3h4v4"/></svg>
                 </a>
                 <button class="complete" type="button">Mark complete</button>
-                <div class="helper">The repo opens on github.com (community-built). Same pattern as the existing video-series course that redirects to a YouTube playlist.</div>
+                <div class="helper">Repo opens in a new tab on github.com (community-built). The Mark complete button stays in Titan.</div>
               </div>
             </div>
             <div class="preview-tile">
@@ -393,7 +345,7 @@
               </div>
             </div>
           </div>
-        </div>
+        
 
         <div class="preview-tile" style="margin-top: 22px;">
           <div class="tile-head"><div class="label">What the partner watches in the video (script)</div><div class="tag placeholder">Outline</div></div>
@@ -414,17 +366,7 @@
 
     <div class="annotation">
       <strong>How to read this mockup.</strong>
-      Each module is a single activity (Module 1 = design only, Module 2 = deploy only). For each module, you can toggle between two integration options:
-      <div class="pair">
-        <div>
-          <h5>Option A &mdash; Embed</h5>
-          <p>The tool / README is embedded directly in the Titan section via iframe. Partner never leaves Titan. Richer experience, but introduces a dependency on whether the third-party site allows iframing and stays available.</p>
-        </div>
-        <div>
-          <h5>Option B &mdash; Redirect</h5>
-          <p>The section shows a short description + an Open button + a Mark complete button + the narrated video. Tool opens on its own site in a new tab. This matches what the existing Business Case Builder and Video Series courses on Titan actually do (verified by walking those courses).</p>
-        </div>
-      </div>
+      Each module is a single activity (Module 1 = design, Module 2 = deploy). Each section uses the same pattern Titan already uses for the Business Case Builder and Video Series courses today: a short description, an "Open" button that takes the partner to the tool in a new tab, a narrated walkthrough video, and a "Mark complete" button. This avoids any iframe / embed dependency on third-party teams.
     </div>
 
   </div>
