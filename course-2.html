@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Mockup &mdash; Help customers classify and label sensitive information (proposed Titan course)</title>
+<title>Mockup &mdash; Stop sensitive data from leaving the tenant (proposed Titan course)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -183,7 +183,7 @@
 <body>
 
 <div class="mockup-banner">
-  Mockup &mdash; proposed Course 1 inside "Accelerate Microsoft Security Implementations" journey
+  Mockup &mdash; proposed Course 2 inside "Accelerate Microsoft Security Implementations" journey
   <span>Layout mirrors the real Data Security &amp; Compliance Tech Deal Ready Titan journey (verified by walking 3 courses inside it).</span>
 </div>
 
@@ -201,7 +201,7 @@
   </aside>
   <div class="main">
     <div class="topbar">
-      <h1>Help customers classify and label sensitive information</h1>
+      <h1>Stop sensitive data from leaving the tenant</h1>
       <div class="right">
         <div class="icon" title="Messages"><svg viewBox="0 0 24 24"><path d="M3 7l9 6 9-6"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg></div>
         <div class="icon bell" title="Notifications"><svg viewBox="0 0 24 24"><path d="M6 18h12l-1.5-2v-5a4.5 4.5 0 00-9 0v5L6 18z"/><path d="M10 21h4"/></svg><span class="dot">2</span></div>
@@ -220,7 +220,7 @@
             <div class="new-pill">NEW</div>
             <div class="body">
               <h3>1. Design</h3>
-              <p>Walk through the community Guided Labeling Assistant to choose the right Microsoft Purview sensitivity labels and protection settings for the customer's industry. Produces a customer-ready label taxonomy.</p>
+              <p>Walk through the community Guided Labeling Assistant's DLP design path: choose enforcement actions, scopes (Exchange, SharePoint, OneDrive), exceptions, and end-user notifications for the customer's industry. Produces a customer-ready DLP policy spec.</p>
             </div>
             <div class="footer">
               <a class="status start" href="#module-1"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M3 2l7 4-7 4z"/></svg> 0% Start</a>
@@ -233,7 +233,7 @@
             <div class="new-pill">NEW</div>
             <div class="body">
               <h3>2. Deploy</h3>
-              <p>Walk through the community PowerShell toolkit to deploy the labels, auto-labeling, and protection policies into the customer tenant. Multi-tenant pattern built for partner SAs.</p>
+              <p>Walk through the community PowerShell toolkit's DLP deployment with <code>-SkipTenantSettings -SkipLabels</code>. Two DLP policies created in simulation mode (Exchange + SharePoint/OneDrive), then promoted to Enforce at ~day 30 via the documented runbook.</p>
             </div>
             <div class="footer">
               <span class="status locked">Locked
@@ -277,13 +277,11 @@
             </div>
             <div class="preview-tile">
               <div class="tile-head"><div class="label">Walkthrough video on top of the tool</div><div class="tag video">~5 min</div></div>
-              <div class="video-embed">
-                <div class="signin-note">Microsoft sign-in required</div>
-                <iframe src="https://microsoft-my.sharepoint.com/:v:/p/hiteshjo/IQB-tvRbxm6tR7x-mjekspDiARxyzcMb86QDPwrq3_dQgPk?action=embedview&wdAr=1.7777777777777777" loading="lazy" allow="autoplay; fullscreen" allowfullscreen title="Maya's clinic scenario walkthrough"></iframe>
-                <a class="open-link" href="https://microsoft-my.sharepoint.com/:v:/p/hiteshjo/IQB-tvRbxm6tR7x-mjekspDiARxyzcMb86QDPwrq3_dQgPk" target="_blank" rel="noopener">
-                  Open in new tab
-                  <svg viewBox="0 0 12 12" fill="currentColor"><path d="M3 9l6-6M5 3h4v4"/></svg>
-                </a>
+              <div class="video-placeholder">
+                <div class="play">&#9654;</div>
+                <h5>DLP design walkthrough</h5>
+                <div class="sub">Narrated walkthrough of the DLP design path: choose enforcement actions, scopes, exceptions, end-user notifications, then export the customer-ready DLP policy spec.</div>
+                <div class="tag">VIDEO PENDING &middot; SPLIT FROM ORIGINAL DESIGN VIDEO</div>
               </div>
             </div>
           </div>
@@ -306,13 +304,11 @@
             </div>
             <div class="preview-tile">
               <div class="tile-head"><div class="label">Walkthrough video alongside the link</div><div class="tag video">~5 min</div></div>
-              <div class="video-embed">
-                <div class="signin-note">Microsoft sign-in required</div>
-                <iframe src="https://microsoft-my.sharepoint.com/:v:/p/hiteshjo/IQB-tvRbxm6tR7x-mjekspDiARxyzcMb86QDPwrq3_dQgPk?action=embedview&wdAr=1.7777777777777777" loading="lazy" allow="autoplay; fullscreen" allowfullscreen title="Maya's clinic scenario walkthrough"></iframe>
-                <a class="open-link" href="https://microsoft-my.sharepoint.com/:v:/p/hiteshjo/IQB-tvRbxm6tR7x-mjekspDiARxyzcMb86QDPwrq3_dQgPk" target="_blank" rel="noopener">
-                  Open in new tab
-                  <svg viewBox="0 0 12 12" fill="currentColor"><path d="M3 9l6-6M5 3h4v4"/></svg>
-                </a>
+              <div class="video-placeholder">
+                <div class="play">&#9654;</div>
+                <h5>DLP design walkthrough</h5>
+                <div class="sub">Same narrated walkthrough as Option A.</div>
+                <div class="tag">VIDEO PENDING &middot; SPLIT FROM ORIGINAL DESIGN VIDEO</div>
               </div>
             </div>
           </div>
@@ -341,7 +337,7 @@
       <div class="head">
         <div class="module-num">MODULE 2 PREVIEW &middot; ~5 MIN</div>
         <h2>Module 2: Deploy</h2>
-        <p class="lead">Unlocks after Module 1. One section. The partner uses the Purview Best Practice Deployment Toolkit to deploy the labels and DLP policies from Module 1 into a customer tenant. Includes the multi-tenant deployment pattern (answering Neha's question).</p>
+        <p class="lead">Unlocks after Module 1. One section. The partner uses the Purview Best Practice Deployment Toolkit with <code>-SkipTenantSettings -SkipLabels</code> to deploy the 2 DLP policies (Exchange + SharePoint/OneDrive) on top of the labels already deployed in Course 1. Policies start in simulation, then promoted to enforce at ~day 30.</p>
       </div>
       <div class="preview-body">
 
@@ -361,8 +357,8 @@
               <div class="tile-head"><div class="label">Walkthrough video on top of the README</div><div class="tag video">~5 min</div></div>
               <div class="video-embed">
                 <div class="signin-note">Microsoft sign-in required</div>
-                <iframe src="https://microsoft-my.sharepoint.com/:v:/p/hiteshjo/IQAAGKiQfaZ5RaL4PDSZhNpOAfam2kzPzEqEagN_aDt5Idw?action=embedview&wdAr=1.7777777777777777" loading="lazy" allow="autoplay; fullscreen" allowfullscreen title="Deployment walkthrough"></iframe>
-                <a class="open-link" href="https://microsoft-my.sharepoint.com/:v:/p/hiteshjo/IQAAGKiQfaZ5RaL4PDSZhNpOAfam2kzPzEqEagN_aDt5Idw" target="_blank" rel="noopener">
+                <iframe src="https://microsoft-my.sharepoint.com/:v:/p/hiteshjo/IQDEGCy9NzuyQYPrzwMVsJDgAbEydL8Q52dESNTfhl4Ads8?action=embedview&wdAr=1.7777777777777777" loading="lazy" allow="autoplay; fullscreen" allowfullscreen title="Deployment walkthrough"></iframe>
+                <a class="open-link" href="https://microsoft-my.sharepoint.com/:v:/p/hiteshjo/IQDEGCy9NzuyQYPrzwMVsJDgAbEydL8Q52dESNTfhl4Ads8" target="_blank" rel="noopener">
                   Open in new tab
                   <svg viewBox="0 0 12 12" fill="currentColor"><path d="M3 9l6-6M5 3h4v4"/></svg>
                 </a>
@@ -390,8 +386,8 @@
               <div class="tile-head"><div class="label">Walkthrough video alongside the link</div><div class="tag video">~5 min</div></div>
               <div class="video-embed">
                 <div class="signin-note">Microsoft sign-in required</div>
-                <iframe src="https://microsoft-my.sharepoint.com/:v:/p/hiteshjo/IQAAGKiQfaZ5RaL4PDSZhNpOAfam2kzPzEqEagN_aDt5Idw?action=embedview&wdAr=1.7777777777777777" loading="lazy" allow="autoplay; fullscreen" allowfullscreen title="Deployment walkthrough"></iframe>
-                <a class="open-link" href="https://microsoft-my.sharepoint.com/:v:/p/hiteshjo/IQAAGKiQfaZ5RaL4PDSZhNpOAfam2kzPzEqEagN_aDt5Idw" target="_blank" rel="noopener">
+                <iframe src="https://microsoft-my.sharepoint.com/:v:/p/hiteshjo/IQDEGCy9NzuyQYPrzwMVsJDgAbEydL8Q52dESNTfhl4Ads8?action=embedview&wdAr=1.7777777777777777" loading="lazy" allow="autoplay; fullscreen" allowfullscreen title="Deployment walkthrough"></iframe>
+                <a class="open-link" href="https://microsoft-my.sharepoint.com/:v:/p/hiteshjo/IQDEGCy9NzuyQYPrzwMVsJDgAbEydL8Q52dESNTfhl4Ads8" target="_blank" rel="noopener">
                   Open in new tab
                   <svg viewBox="0 0 12 12" fill="currentColor"><path d="M3 9l6-6M5 3h4v4"/></svg>
                 </a>
@@ -405,12 +401,12 @@
           <div class="script-card">
             <h5>5-minute walkthrough &mdash; one continuous take</h5>
             <ol>
-              <li>Open the toolkit repo. Confirm PowerShell 7 and tenant-admin credentials.</li>
-              <li>Run <code>.\Deploy-PurviewBestPractice.ps1 -BPOnly -WhatIf</code> against the sandbox; read the diff.</li>
-              <li>Re-run without <code>-WhatIf</code>. Show the labels created in the Microsoft Purview portal: Personal, Public, General, Confidential (with AllEmployees sub-label), Highly Confidential.</li>
-              <li>Show the two DLP policies created: one for Exchange Online, one for SharePoint + OneDrive. Both block external sharing of <code>Confidential\AllEmployees</code>.</li>
-              <li>Note that DLP match condition uses the label <strong>GUID</strong> so a rename does not break the policy.</li>
-              <li>Walk the multi-tenant pattern: partner-side loop iterating customer tenants with delegated admin / GDAP context. The script itself is single-tenant; multi-tenant is the wrapper around it.</li>
+              <li>Open the toolkit repo. Confirm PowerShell 7 and tenant-admin credentials. Verify Course 1 already deployed labels in the target tenant.</li>
+              <li>Run <code>.\Deploy-PurviewBestPractice.ps1 -BPOnly -SkipTenantSettings -SkipLabels -WhatIf</code> against the sandbox; read the diff. Confirm Tasks 1 and 2 are SKIPPED and Task 3 (DLP) is the only thing that will run.</li>
+              <li>Re-run without <code>-WhatIf</code>. Show the two DLP policies created in the Microsoft Purview portal: one for Exchange Online, one for SharePoint + OneDrive. Both block external sharing of <code>Confidential\AllEmployees</code>.</li>
+              <li>Show that both policies start in <strong>Simulation mode</strong> &mdash; telemetry only, nothing blocked yet.</li>
+              <li>Note that the DLP match condition uses the label <strong>GUID</strong> from Course 1, so a rename of the label later does not silently break enforcement.</li>
+              <li>Reference the <em>DLP Simulation Exit Runbook</em> &mdash; at ~day 30, the partner reviews policy hits, adjusts exceptions, then promotes each policy from Simulation to Enable.</li>
             </ol>
           </div>
         </div>
