@@ -302,22 +302,6 @@
               </div>
             </div>
           </div>
-        
-
-        <div class="preview-tile" style="margin-top: 22px;">
-          <div class="tile-head"><div class="label">What the partner watches in the video (script)</div><div class="tag placeholder">Outline</div></div>
-          <div class="script-card">
-            <h5>5-minute walkthrough &mdash; one continuous take</h5>
-            <ol>
-              <li>Open the CxE Guided Labeling Assistant. Pick <strong>Configure DLP enforcement</strong>.</li>
-              <li>Confirm prerequisite: Course 1&apos;s sensitivity labels are already deployed in the customer tenant.</li>
-              <li>Choose enforcement action: <strong>block external sharing</strong> of content labelled <code>Confidential\AllEmployees</code>.</li>
-              <li>Choose scope: <strong>Exchange Online</strong> + <strong>SharePoint &amp; OneDrive</strong> (two separate policies per Microsoft guidance).</li>
-              <li>Configure exceptions and end-user notifications (policy tip, sender override allowed with justification, admin notification).</li>
-              <li>Export the customer-ready DLP policy spec. Module 2 will deploy these policies via PowerShell in simulation mode.</li>
-            </ol>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -356,22 +340,6 @@
               </div>
             </div>
           </div>
-        
-
-        <div class="preview-tile" style="margin-top: 22px;">
-          <div class="tile-head"><div class="label">What the partner watches in the video (script)</div><div class="tag placeholder">Outline</div></div>
-          <div class="script-card">
-            <h5>5-minute walkthrough &mdash; one continuous take</h5>
-            <ol>
-              <li>Open the toolkit repo. Confirm PowerShell 7 and tenant-admin credentials. Verify Course 1 already deployed labels in the target tenant.</li>
-              <li>Run <code>.\Deploy-PurviewBestPractice.ps1 -BPOnly -SkipTenantSettings -SkipLabels -WhatIf</code> against the sandbox; read the diff. Confirm Tasks 1 and 2 are SKIPPED and Task 3 (DLP) is the only thing that will run.</li>
-              <li>Re-run without <code>-WhatIf</code>. Show the two DLP policies created in the Microsoft Purview portal: one for Exchange Online, one for SharePoint + OneDrive. Both block external sharing of <code>Confidential\AllEmployees</code>.</li>
-              <li>Show that both policies start in <strong>Simulation mode</strong> &mdash; telemetry only, nothing blocked yet.</li>
-              <li>Note that the DLP match condition uses the label <strong>GUID</strong> from Course 1, so a rename of the label later does not silently break enforcement.</li>
-              <li>Reference the <em>DLP Simulation Exit Runbook</em> &mdash; at ~day 30, the partner reviews policy hits, adjusts exceptions, then promotes each policy from Simulation to Enable.</li>
-            </ol>
-          </div>
-        </div>
       </div>
     </div>
 

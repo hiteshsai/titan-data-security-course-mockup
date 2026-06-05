@@ -302,22 +302,6 @@
               </div>
             </div>
           </div>
-        
-
-        <div class="preview-tile" style="margin-top: 22px;">
-          <div class="tile-head"><div class="label">What the partner watches in the video (script)</div><div class="tag placeholder">Outline</div></div>
-          <div class="script-card">
-            <h5>5-minute walkthrough &mdash; one continuous take</h5>
-            <ol>
-              <li>Open the CxE Guided Labeling Assistant. Pick <strong>Recommend sensitivity labels</strong>.</li>
-              <li>Set industry and data context (e.g. healthcare / patient identifiers; or finance / customer PII).</li>
-              <li>Walk the 6-question label decision flow and land on a defensible recommendation per content type.</li>
-              <li>Review the recommended label set: Personal, Public, General, Confidential + AllEmployees, Highly Confidential.</li>
-              <li>Confirm encryption defaults on the three sensitive labels (Confidential, Confidential\AllEmployees, Highly Confidential).</li>
-              <li>Export the customer-ready label taxonomy. Module 2 will deploy these labels into the customer tenant via PowerShell.</li>
-            </ol>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -356,22 +340,6 @@
               </div>
             </div>
           </div>
-        
-
-        <div class="preview-tile" style="margin-top: 22px;">
-          <div class="tile-head"><div class="label">What the partner watches in the video (script)</div><div class="tag placeholder">Outline</div></div>
-          <div class="script-card">
-            <h5>5-minute walkthrough &mdash; one continuous take</h5>
-            <ol>
-              <li>Open the toolkit repo. Confirm PowerShell 7 (the script hard-fails on Windows PowerShell 5.1) and tenant-admin credentials for the target customer.</li>
-              <li>Run <code>.\Deploy-PurviewBestPractice.ps1 -TenantAdminUpn admin@customer.onmicrosoft.com -BPOnly -SkipDLP -WhatIf</code>. Read the diff. Confirm only labels + tenant settings would change; DLP is skipped (handled in Course 2).</li>
-              <li>Re-run without <code>-WhatIf</code>. Show the 5 sensitivity labels created in the Microsoft Purview portal: Personal, Public, General (default), Confidential + AllEmployees sub-label, Highly Confidential.</li>
-              <li>Show tenant settings enabled: Unified Audit Log on, SharePoint AIP integration on, PDF labelling on, label co-authoring on.</li>
-              <li>Flag the sharp edge: encryption identity <code>AuthenticatedUsers</code> includes B2B guests and OTP users. Partners should audit the guest list before publishing the encrypting labels.</li>
-              <li>Re-run is safe (idempotent) — every object is stamped with <code>[Managed by SMBTool Purview Toolkit]</code> so re-runs detect and skip what already exists.</li>
-            </ol>
-          </div>
-        </div>
       </div>
     </div>
 
